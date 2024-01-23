@@ -11,6 +11,11 @@
                         <div class="col-lg">
                             
                         <div class="card-body p-md-5 mx-md-4">
+                            <div class="text-center">
+                                    <img src="https://res.cloudinary.com/dwbnrx0mg/image/upload/c_thumb,w_200,g_face/v1705993978/doan/3752bcc334a1ba2613c6d389318f503b_xau5p1.jpg" alt="">
+                                    <h4 class="mt-1 mb-5 pb-1">Chào mừng đến với BusGoo</h4>
+                            </div>
+                        
                             <Form >
                                 <div
                                     v-for="{ as, name, label, ...attrs } in formSchema.fields"
@@ -27,19 +32,8 @@
                                     </button>
                                 </div>
                             </Form>
-                            <span>Bạn chưa có tài khoản?</span><span class="text-regis fw-bold"> Đăng kí</span>
-                            <p class="text-gray">-OR-</p>
-                            <div class="d-flex flex-row justify-content-evenly">
-                                <button class="btn btn-light border border-dark m-10">
-                                    <FontAwesomeIcon icon="fa-brands fa-google" />
-                                    <span class="p-2">Đăng nhập với google</span>
-                                </button>
-                                
-                                <button class="btn btn-light border border-dark m-10">
-                                    <FontAwesomeIcon icon="fa-brands fa-github" />
-                                    <span class="p-2">Đăng nhập với github</span>
-                                </button>
-                            </div>
+                            <span>Bạn chưa có tài khoản?</span><span class="text-regis fw-bold" @click="forwardRegister"> Đăng kí</span>
+                            
                         </div>
                             
 
@@ -57,13 +51,12 @@
 
 <script lang="ts">
 
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import { defineComponent} from 'vue';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup'
 export default defineComponent({
     components: { 
-        FontAwesomeIcon,
         Form,
         Field,
         ErrorMessage
@@ -90,7 +83,11 @@ export default defineComponent({
       formSchema,
     };
   },
-    
+    methods: {
+        forwardRegister(){
+            this.$router.push("/register");
+        }
+    }
 })
 </script>
 <style scoped>
